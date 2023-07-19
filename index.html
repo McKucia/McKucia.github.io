@@ -1,8 +1,49 @@
+<!DOCTYPE html>
 <html>
+
 <head>
     <title>Coctail bar</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 </head>
+
 <body>
-    init
+    <form>
+        <button>Connect</button>
+    </form>
+
+    <script>
+        function isWebBLEAvailable() {
+            if (!navigator.bluetooth) {
+                console.log('Web Bluetooth is not available');
+                return false;
+            }
+            console.log('Web Bluetooth is available');
+            return true;
+        }
+
+        function getDeviceInfo() {
+            let options = {
+                filters: [
+                    { name: 'Galaxy' }
+                ]
+            }
+            console.log('Requesting BLE device info...');
+            navigator.bluetooth.requestDevice(options).then(device => {
+                console.log('Name: ' + device.name);
+            })
+        }
+
+        document.querySelector('form').addEventListener('submit',
+            function (event) {
+                event.stopPropagation();
+                event.preventDefault();
+
+                if (isWebBLEAvailable()) {
+                    getDeviceInfo();
+                }
+            }
+        )
+    </script>
 </body>
+
 </html>
