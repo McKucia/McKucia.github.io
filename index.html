@@ -1,15 +1,112 @@
-<!DOCTYPE html>
-<html>
+﻿<!DOCTYPE html>
+<html lang="pl">
 
 <head>
     <title>Coctail bar</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0" />
 </head>
 
+<style>
+    .tile {
+        border-radius: 4px;
+        box-shadow: 0 4px 10px rgba(0,0,0,.09);
+        max-width: 400px;
+        text-align: left;
+        word-wrap: break-word;
+        background-clip: border-box;
+        background-color: #fff;
+        border: 1px solid rgba(0,0,0,.125);
+        border-radius: .25rem;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        overflow: hidden;
+    }
+    .drinkImage {
+        object-fit: cover;
+        height: 125px;
+    }
+    .info {
+        font-size: 10px;
+        padding: 7px 13px;
+        height: 150px;
+        text-overflow: ellipsis;
+        text-align: justify;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 6;
+        -webkit-box-orient: vertical;
+    }
+    #drinksBox {
+        grid-template-columns: repeat(2,minmax(110px,1fr));
+        grid-gap: 10px;
+        display: grid;
+    }
+    @media (min-width: 1400px) {
+        #drinksBox {
+            grid-template-columns: repeat(4,minmax(110px,1fr));
+        }
+    }
+    @media (min-width: 1000px) {
+        #drinksBox {
+            grid-template-columns: repeat(3,minmax(80px,1fr));
+        }
+    }
+</style>
+
 <body>
-    <form>
+    <!--<form>
         <button>Connect</button>
-    </form>
+    </form>-->
+
+    <div id="drinksBox" class="m-4">
+        <a href="#" class="tile">
+            <div class="d-flex justify-content-center">
+                <img class="drinkImage" src="images/aperol.jpg" alt="aperol" />
+            </div>
+            <div class="info">
+                W Jego stronę samymi jak nurek, zwiedzający wnętrze nurek, zwiedzający wnętrze raczej szydercza niż malownicza. Lekko, wykręcił jak pływak po sobie tylko owe kieszeni kombinezonu, do małego prawda nie było jasne, gruzami... zarazi Nie było się i zaczął bez końca wysypywać na wpół czytelne znaki zwyczajnego życia, małych jednoosobowych w tej sprawie własną Nie było przecież ciążenia. Się w stawach? Do wierzchu szafki od zegarka starych cywilnych leje! Ten tak mu Śmiga?
+            </div>
+        </a>
+        <a href="#" class="tile">
+            <div class="d-flex justify-content-center">
+                <img class="drinkImage" src="images/aperol.jpg" alt="aperol" />
+            </div>
+            <div class="info">
+                <div>1. Ble</div>
+                <div>1. Ble</div>
+                <div>1. Ble</div>
+                <div>1. Ble</div>
+                <div>1. Ble</div>
+            </div>
+        </a>
+        <a href="#" class="tile">
+            <div class="d-flex justify-content-center">
+                <img class="drinkImage" src="images/aperol.jpg" alt="aperol" />
+            </div>
+            <div class="info">
+                <div>1. Ble</div>
+                <div>1. Ble</div>
+                <div>1. Ble</div>
+                <div>1. Ble</div>
+                <div>1. Ble</div>
+            </div>
+        </a>
+        <a href="#" class="tile">
+            <div class="d-flex justify-content-center">
+                <img class="drinkImage" src="images/aperol.jpg" alt="aperol" />
+            </div>
+            <div class="info">
+                <div>1. Ble</div>
+                <div>1. Ble</div>
+                <div>1. Ble</div>
+                <div>1. Ble</div>
+                <div>1. Ble</div>
+            </div>
+        </a>
+    </div>
 
     <script>
         function isWebBLEAvailable() {
@@ -44,6 +141,9 @@
             }
         )
     </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 
 </html>
