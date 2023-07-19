@@ -41,13 +41,21 @@
     }
     .info {
         font-size: 10px;
-        padding: 7px 13px;
-        height: 100px;
+        padding: 7px 10px;
+        height: 125px;
+        text-align:justify;
+    }
+    .description {
         text-overflow: ellipsis;
         overflow: hidden;
         display: -webkit-box;
         -webkit-line-clamp: 6;
         -webkit-box-orient: vertical;
+    }
+    .name {
+        text-align: center;
+        font-size: 12px;
+        font-weight: 700;
     }
     #drinksBox {
         grid-template-columns: repeat(2,minmax(110px,1fr));
@@ -74,10 +82,13 @@
     <div id="drinksBox" class="m-4">
         <a href="#" class="tile">
             <div class="drinkImage d-flex justify-content-center">
-                <img src="images/aperol.jpg" alt="aperol" />
+                <img src="images/aperol.png" alt="aperol" />
             </div>
             <div class="info">
-                W Jego stronę samymi jak nurek, zwiedzający wnętrze nurek, zwiedzający wnętrze raczej szydercza niż malownicza. Lekko, wykręcił jak pływak po sobie tylko owe kieszeni kombinezonu, do małego prawda nie było jasne, gruzami... zarazi Nie było się i zaczął bez końca wysypywać na wpół czytelne znaki zwyczajnego życia, małych jednoosobowych w tej sprawie własną Nie było przecież ciążenia. Się w stawach? Do wierzchu szafki od zegarka starych cywilnych leje! Ten tak mu Śmiga?
+                <div class="name">Aperol Spritz</div>
+                <span class="description">
+                    W Jego stronę samymi jak nurek, zwiedzający wnętrze nurek, zwiedzający wnętrze raczej szydercza niż malownicza. Lekko, wykręcił jak pływak po sobie tylko owe kieszeni kombinezonu, do małego prawda nie było jasne, gruzami... zarazi Nie było się i zaczął bez końca wysypywać na wpół czytelne znaki zwyczajnego życia, małych jednoosobowych w tej sprawie własną Nie było przecież ciążenia. Się w stawach? Do wierzchu szafki od zegarka starych cywilnych leje! Ten tak mu Śmiga?
+                </span>
             </div>
         </a>
         <a href="#" class="tile">
