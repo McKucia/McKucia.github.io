@@ -140,8 +140,7 @@
 
         function getDeviceInfo() {
             let options = {
-                filters: [
-                ]
+                acceptAllDevices: true
             }
             console.log('Requesting BLE device info...');
             navigator.bluetooth.requestDevice(options).then(device => {
