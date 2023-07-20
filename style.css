@@ -1,0 +1,86 @@
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #16161D;
+}
+
+.tile {
+    color: #16161D;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px rgba(0,0,0,.09);
+    max-width: 400px;
+    text-align: left;
+    word-wrap: break-word;
+    background-clip: border-box;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.drinkImage {
+    height: 110px;
+}
+
+    .drinkImage img {
+        width: 100%;
+        object-fit: cover;
+    }
+
+.info {
+    font-size: 9px;
+    padding: 7px 10px;
+    height: 115px;
+    text-align: justify;
+}
+
+.description {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+}
+
+.name {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+#drinksBox {
+    grid-template-columns: repeat(2,minmax(110px,1fr));
+    grid-gap: 10px;
+    display: grid;
+}
+
+@media (min-width: 1400px) {
+    #drinksBox {
+        grid-template-columns: repeat(4,minmax(110px,1fr));
+    }
+}
+
+@media (min-width: 1000px) {
+    #drinksBox {
+        grid-template-columns: repeat(3,minmax(80px,1fr));
+    }
+}
+
+
+#terminal div {
+    color: gray;
+}
+
+#terminal div.out {
+    color: red;
+}
+
+#terminal div.in {
+    color: blue;
+}
