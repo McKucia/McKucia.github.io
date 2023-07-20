@@ -8,26 +8,59 @@
     <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0" />
     <meta charset="utf-8">
     <link href="style.css" rel="stylesheet">
-
+    <link href="times.css" rel="stylesheet">
 </head>
 
 <body>
-    <div class="d-flex align-items-center justify-content-center mt-4">
-        <button id="connect" class="btButton mr-3" type="button">Połącz</button>
-        <button id="disconnect" class="btButton ml-3" type="button">Rozłącz</button>
+    <div id="connectDiv" class="position-absolute w-100">
+        <div class="d-flex align-items-center justify-content-center mt-4">
+            <button id="connect" class="btButton mr-3" type="button">Połącz</button>
+            <button id="disconnect" class="btButton ml-3" type="button">Rozłącz</button>
+        </div>
+
+        <div id="status" class="text-center">
+            Status
+        </div>
     </div>
 
     <div id="loadingPopup">
+        <div class="wrapper">
+            <button Id="closeButton">
+                <div class="arrow">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+            </button>
+        </div>
         <div id="popupContent">
-            <div class="mb-2 text-center">Twój drin robi się...</div>
-            <div id="progressContainer">
+            <div class="drinkImagePop d-flex justify-content-center">
+                <img Id="imagePop" src="images/aperol.png" alt="aperol" />
+            </div>
+            <div class="infoPop">
+                <div Id="namePop"></div>
+                <hr />
+                <span Id="descriptionPop"></span>
+                <br />
+                <div class="ingredients mt-1">Składniki:</div>
+                <ul>
+                    <li>75ml - Prosecco</li>
+                    <li>50ml - Aperol</li>
+                    <li>25ml - woda mineralna gazowana</li>
+                    <li>kostki lodu</li>
+                    <li>czerwona pomarańcza</li>
+                </ul>
+            </div>
+            <div class="d-flex justify-content-center">
+                <button id="order" class="btButton text-center" type="button">Zamawiam</button>
+            </div>
+            <div id="progressContainer" class="mt-3">
                 <div id="progress"></div>
             </div>
         </div>
     </div>
 
     <div id="drinksBox" class="m-4">
-        <a href="#loadingPopup" class="tile" onclick="make('1')">
+        <button class="tile" onclick="openPopup(this, 'aperol')">
             <div class="drinkImage d-flex justify-content-center">
                 <img src="images/aperol.png" alt="aperol" />
             </div>
@@ -37,8 +70,9 @@
                     Aperol Spritz stał się jednym z najbardziej popularnych koktajli na świecie, a pozycja w czołowej dziesiątce najlepiej sprzedających się drinków na świecie dobitnie o tym świadczy. Jego historia sięga roku 1919, kiedy to włoskie rodzeństwo Barbieri wprowadziło na rynek aperitif na bazie goryczki, gorzkiej pomarańczy, rabarbaru i wyciągu z ziół. Napój już w latach pięćdziesiątych ubiegłego wieku był chętnie serwowaną alternatywą dla weneckiej mieszanki wina i gazowanej wody. Apogeum sławy Aperol Spritz zawdzięcza przejęciu marki przez firmę Campari, która dołożyła wszelkich starań aby rozreklamować koktajl w przestrzeni publicznej, między innymi dzięki wprowadzeniu na rynek w 2011 drinka w butelce gotowego do podania.
                 </span>
             </div>
-        </a>
-        <a href="#" class="tile">
+        </button>
+
+        <button class="tile" onclick="openPopup(this, 'tomcollins')">
             <div class="drinkImage d-flex justify-content-center">
                 <img src="images/tomcollins.png" alt="tom collins" />
             </div>
@@ -49,8 +83,9 @@
                     Pierwsza wzmianka o tym drinku pochodzi z roku 1876 kiedy to Jerry Thomas umieścił przepis na ten koktajl w swojej książce pod tytułem „Przewodnik barmana”.
                 </span>
             </div>
-        </a>
-        <a href="#" class="tile">
+        </button>
+
+        <button class="tile" onclick="openPopup(this, 'russian')">
             <div class="drinkImage d-flex justify-content-center">
                 <img src="images/rusek.png" alt="black russian" />
             </div>
@@ -61,8 +96,9 @@
                     Historia napoju sięga lat 50, a pierwszy raz, kiedy został zaserwowany miał miejsce w Belgii przez belgijskiego barmana dla amerykańskiej ambasador. Prosty skład oraz wyrazisty smak sprawiają, że drink zyskał dużą popularność. Jest kojarzony z Białym Rosjaninem, jednak nie posiada w swoim składzie mleka, ani śmietanki.
                 </span>
             </div>
-        </a>
-        <a href="#" class="tile">
+        </button>
+
+        <button class="tile" onclick="openPopup(this, 'mojito')">
             <div class="drinkImage d-flex justify-content-center">
                 <img src="images/mohito.png" alt="mojito" />
             </div>
@@ -72,7 +108,7 @@
                     Mało jest na świecie drinków, które doczekały się takiej popularności jak mojito. Pomimo względnej prostoty wykonania i bogactwa wariacji na temat składników, tradycyjny przepis na ten koktajl jest jeden i ten sam od XIX wieku. Pomysł na połączenie białego rumu z sokiem limonkowym, cukrem, miętą i wodą sodową powstał na Kubie, a konkretniej na ulicach Hawany. Wartym uzupełnienia faktem, jest prawdopodobna historia stworzenia napoju alkoholowego z sokami owoców tropikalnych i orzeźwiającymi ziołami przez żeglarzy Sir Francisa Drake’a na obszarze Morza Karaibskiego, podczas jego wyprawy dookoła Ziemi. Jako warianty, najczęściej stosuje się do uzupełniania koktajlu toniki, a także eksperymenty z aromatyzowanymi gatunkami rumu.
                 </span>
             </div>
-        </a>
+        </button>
     </div>
 
     <script src="bt.js"></script>

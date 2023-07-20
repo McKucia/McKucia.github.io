@@ -1,0 +1,27 @@
+.progressAperol {
+    width: 100% !important;
+    background: #444;
+    -webkit-transition: width 3s linear;
+    transition: width 3s linear;
+}
+
+.progressRussian {
+    width: 100% !important;
+    background: #4d3e2f;
+    -webkit-transition: width 3s linear;
+    transition: width 3s linear;
+}
+
+.progressMojito {
+    width: 100% !important;
+    background: #e4f3e0;
+    -webkit-transition: width 3s linear;
+    transition: width 3s linear;
+}
+
+.progressTomCollins {
+    width: 100% !important;
+    background: #ffd800;
+    -webkit-transition: width 3s linear;
+    transition: width 3s linear;
+}

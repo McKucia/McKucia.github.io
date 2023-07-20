@@ -1,14 +1,48 @@
-let connectButton = document.getElementById('connect');
+﻿let connectButton = document.getElementById('connect');
 let disconnectButton = document.getElementById('disconnect');
 let progress = document.getElementById('progress');
+let status = document.getElementById('status');
+let loadingPopup = document.getElementById('loadingPopup');
+let closeButton = document.getElementById('closeButton');
+let orderButton = document.getElementById('order');
+let progressContainer = document.getElementById('progressContainer');
 
-function make(drink) {
-    send(drink);
-    progressBar();
+let namePop = document.getElementById('namePop');
+let descriptionPop = document.getElementById('descriptionPop');
+let imagePop = document.getElementById("imagePop");
+
+var clicked = '';
+
+function openPopup(element, drink) {
+    clicked = drink;
+    let name = element.childNodes[3].childNodes[1].innerHTML;
+    let description = element.childNodes[3].childNodes[3].innerHTML;
+    let imgSrc = element.childNodes[1].childNodes[1].src;
+
+    imagePop.src = imgSrc;
+    namePop.innerHTML = name;
+    descriptionPop.innerHTML = description;
+
+    loadingPopup.classList.add("loadingPopupOpen");
 }
 
-function progressBar() {
-    progress.classList.add("progressLoading");
+function make() {
+    progressContainer.classList.add("progressFocus");
+    switch (clicked) {
+        case 'aperol':
+            progress.classList.add("progressAperol");
+            break;
+        case 'tomcollins':
+            progress.classList.add("progressTomCollins");
+            break;
+        case 'russian':
+            progress.classList.add("progressRussian");
+            break;
+        case 'mojito':
+            progress.classList.add("progressMojito");
+            break;
+    }
+    clicked = '';
 }
 
 connectButton.addEventListener('click', function () {
@@ -18,6 +52,19 @@ connectButton.addEventListener('click', function () {
 disconnectButton.addEventListener('click', function () {
     disconnect();
 });
+
+closeButton.addEventListener('click', function () {
+    close();
+});
+
+orderButton.addEventListener('click', function () {
+    make();
+});
+
+function close() {
+    loadingPopup.classList.remove("loadingPopupOpen");
+    clicked = '';
+}
 
 function connect() {
     return (deviceCache ? Promise.resolve(deviceCache) :
@@ -68,9 +115,10 @@ let deviceCache = null;
 
 function requestBluetoothDevice() {
     return navigator.bluetooth.requestDevice({
-        filters: [{ services: [0xFFE0] }],
+        acceptAllDevices: true
     }).
         then(device => {
+            log('Wybrane urządzenie: ' + device.name != null ? device.name : 'nieobsługiwane')
             deviceCache = device;
             deviceCache.addEventListener('gattserverdisconnected',
                 handleDisconnection);
@@ -103,6 +151,7 @@ function connectDeviceAndCacheCharacteristic(device) {
             return service.getCharacteristic(0xFFE1);
         }).
         then(characteristic => {
+            log('Udało się połączyć');
             characteristicCache = characteristic;
 
             return characteristicCache;
@@ -112,6 +161,7 @@ function connectDeviceAndCacheCharacteristic(device) {
 function startNotifications(characteristic) {
     return characteristic.startNotifications().
         then(() => {
+            log(deviceCache);
             characteristic.addEventListener('characteristicvaluechanged',
                 handleCharacteristicValueChanged);
         });
@@ -119,4 +169,8 @@ function startNotifications(characteristic) {
 
 function handleCharacteristicValueChanged(event) {
     let value = new TextDecoder().decode(event.target.value);
+}
+
+function log(message) {
+    status.innerHTML = message;
 }

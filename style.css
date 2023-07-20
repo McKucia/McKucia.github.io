@@ -1,3 +1,7 @@
+:root {
+    --progressTimer: 1;
+}
+
 body {
     background:#f8f8f8;
 }
@@ -11,6 +15,13 @@ a:hover {
     color: #16161D;
 }
 
+hr {
+    margin-top: 0.7rem;
+    margin-bottom: 0.7rem;
+    border: 0;
+    border-top: 1px solid rgba(0,0,0,.1);
+}
+
 button {
     padding: 0;
     border: none;
@@ -21,36 +32,30 @@ button {
         outline: none;
     }
 
-/*.btButton {
-    font-family: "Open Sans", sans-serif;
-    font-size: 16px;
-    letter-spacing: 2px;
-    text-decoration: none;
-    text-transform: uppercase;
-    color: #16161D;
-    cursor: pointer;
-    border: 3px solid;
-    padding: 0.25em 0.5em;
-    box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
-    position: relative;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
+
+#connectDiv {
+    bottom: 0;
+    background: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,.43);
 }
 
-    .btButton:active {
-        box-shadow: 0px 0px 0px 0px;
-        top: 5px;
-        left: 5px;
-    }
+#status {
+    width: 50%;
+    margin: 0 auto;
+    height: 30px;
+    border: 1px silver solid;
+    border-radius: 4px;
+    font-size: 12px;
+    line-height: 26px;
+    background: #f8f8f8;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 
-    @media (min-width: 768px) {
-        .btButton {
-            padding: 0.25em 0.75em;
-        }
-    }*/
-
-
+#order {
+    font-size: 12px;
+    height: 32px;
+}
 
 .btButton {
     align-items: center;
@@ -63,14 +68,13 @@ button {
     color: #36395A;
     cursor: pointer;
     display: inline-flex;
-    font-family: "JetBrains Mono",monospace;
-    height: 48px;
+    height: 34px;
     justify-content: center;
     line-height: 1;
     list-style: none;
     overflow: hidden;
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 14px;
+    padding-right: 14px;
     position: relative;
     text-align: left;
     text-decoration: none;
@@ -80,7 +84,7 @@ button {
     touch-action: manipulation;
     white-space: nowrap;
     will-change: box-shadow,transform;
-    font-size: 18px;
+    font-size: 14px;
 }
 
     .btButton:focus {
@@ -111,33 +115,45 @@ button {
     transition: all 0.4s;
     visibility: hidden;
     opacity: 0;
+    z-index: 100;
 }
+
+    .loadingPopupOpen {
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
 
 #popupContent {
     background: white;
-    width: 80%;
-    padding: 1em 2em;
+    width: 95%;
+    padding: 1em 0.9em;
     border-radius: 4px;
     position: absolute;
-    top: 25%;
-}
-
-#loadingPopup:target {
-    visibility: visible;
-    opacity: 1;
+    top: 20px;
 }
 
 #progressContainer {
     width: 90%;
     margin: 0 auto;
-    height: 30px;
+    height: 25px;
     border: 1px silver solid;
     border-radius: 4px;
     background: white;
+    transition: all 0.2s linear;
+    opacity: 0.3;
+}
+
+.progressFocus {
+    transform: scale(1.05);
+    opacity: 1 !important;
+}
+
+.progressContainerOpen {
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 #progress {
-    background: orange;
     height: 100%;
     width: 0;
     text-align: right;
@@ -145,13 +161,6 @@ button {
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
     line-height: 30px;
-    color: #444;
-    -webkit-transition: width 3s linear;
-    transition: width 5s linear;
-}
-
-.progressLoading {
-    width: 100% !important;
 }
 
 .tile {
@@ -169,7 +178,7 @@ button {
     flex-direction: column;
     min-width: 0;
     overflow: hidden;
-    transition-duration: 0.1s;
+    transition-duration: 0.5s;
 }
 
 .tile:focus {
@@ -185,10 +194,24 @@ button {
         object-fit: cover;
     }
 
+.drinkImagePop {
+    height: 150px;
+}
+
+    .drinkImagePop img {
+        object-fit: contain;
+    }
+
 .info {
     font-size: 9px;
     padding: 7px 10px;
     height: 115px;
+    text-align: justify;
+}
+
+.infoPop {
+    font-size: 11px;
+    padding: 7px 10px;
     text-align: justify;
 }
 
@@ -206,10 +229,57 @@ button {
     font-weight: 700;
 }
 
+#namePop {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.ingredients {
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.arrow {
+    right: 7%;
+    top: 4%;
+    z-index: 200;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: #bababa;
+    transition: 0.2s ease-in-out;
+    position: absolute;
+}
+
+.line {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 4px;
+    border-radius: 2px;
+    background: white;
+    transform-origin: center;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.line:nth-child(2) {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.arrow:hover {
+    transform: rotate(45deg);
+}
+
 #drinksBox {
     grid-template-columns: repeat(2,minmax(110px,1fr));
     grid-gap: 10px;
     display: grid;
+}
+
+.making {
+    font-size: 14px;
 }
 
 @media (min-width: 1400px) {
@@ -222,17 +292,4 @@ button {
     #drinksBox {
         grid-template-columns: repeat(3,minmax(80px,1fr));
     }
-}
-
-
-#terminal div {
-    color: gray;
-}
-
-#terminal div.out {
-    color: red;
-}
-
-#terminal div.in {
-    color: blue;
 }
