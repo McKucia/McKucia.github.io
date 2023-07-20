@@ -1,3 +1,7 @@
+body {
+    background:#f8f8f8;
+}
+
 a {
     text-decoration: none;
 }
@@ -5,6 +9,149 @@ a {
 a:hover {
     text-decoration: none;
     color: #16161D;
+}
+
+button {
+    padding: 0;
+    border: none;
+    background: none;
+}
+
+    button:focus {
+        outline: none;
+    }
+
+/*.btButton {
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #16161D;
+    cursor: pointer;
+    border: 3px solid;
+    padding: 0.25em 0.5em;
+    box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+    .btButton:active {
+        box-shadow: 0px 0px 0px 0px;
+        top: 5px;
+        left: 5px;
+    }
+
+    @media (min-width: 768px) {
+        .btButton {
+            padding: 0.25em 0.75em;
+        }
+    }*/
+
+
+
+.btButton {
+    align-items: center;
+    appearance: none;
+    background-color: #FCFCFD;
+    border-radius: 4px;
+    border-width: 0;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #36395A;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: "JetBrains Mono",monospace;
+    height: 48px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 16px;
+    padding-right: 16px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow .15s,transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow,transform;
+    font-size: 18px;
+}
+
+    .btButton:focus {
+        box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+    }
+
+    .btButton:hover {
+        box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+        transform: translateY(-2px);
+    }
+
+    .btButton:active {
+        box-shadow: #D6D6E7 0 3px 7px inset;
+        transform: translateY(2px);
+    }
+
+#loadingPopup {
+    margin: auto;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(100, 100, 100, 0.4);
+    transition: all 0.4s;
+    visibility: hidden;
+    opacity: 0;
+}
+
+#popupContent {
+    background: white;
+    width: 80%;
+    padding: 1em 2em;
+    border-radius: 4px;
+    position: absolute;
+    top: 25%;
+}
+
+#loadingPopup:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+#progressContainer {
+    width: 90%;
+    margin: 0 auto;
+    height: 30px;
+    border: 1px silver solid;
+    border-radius: 4px;
+    background: white;
+}
+
+#progress {
+    background: orange;
+    height: 100%;
+    width: 0;
+    text-align: right;
+    font: bold 12px arial;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    line-height: 30px;
+    color: #444;
+    -webkit-transition: width 3s linear;
+    transition: width 5s linear;
+}
+
+.progressLoading {
+    width: 100% !important;
 }
 
 .tile {
@@ -22,6 +169,11 @@ a:hover {
     flex-direction: column;
     min-width: 0;
     overflow: hidden;
+    transition-duration: 0.1s;
+}
+
+.tile:focus {
+    transform: scale(1.03);
 }
 
 .drinkImage {

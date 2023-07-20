@@ -1,8 +1,14 @@
 let connectButton = document.getElementById('connect');
 let disconnectButton = document.getElementById('disconnect');
+let progress = document.getElementById('progress');
 
 function make(drink) {
     send(drink);
+    progressBar();
+}
+
+function progressBar() {
+    progress.classList.add("progressLoading");
 }
 
 connectButton.addEventListener('click', function () {
