@@ -235,7 +235,7 @@ header {
 
 #descriptionPop {
     max-height: 140px;
-    overflow: scroll;
+    overflow: auto;
     padding-bottom: 6px;
     padding-right: 15px;
     border-bottom: 1px solid rgba(0,0,0,.1);
@@ -312,9 +312,11 @@ header {
     transition: all 0.2s;
     left: 0;
     top: 0;
+    visibility: hidden;
 }
 
 .blur {
+    visibility: visible !important;
     z-index: 250;
     backdrop-filter: grayscale(0.5) blur(5px);
 }
