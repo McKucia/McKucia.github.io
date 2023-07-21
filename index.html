@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿    <!DOCTYPE html>
 <html lang="pl">
 
 <head>
@@ -12,17 +12,16 @@
 </head>
 
 <body>
-    <div id="connectDiv" class="position-absolute w-100">
-        <div class="d-flex align-items-center justify-content-center mt-4">
-            <button id="connect" class="btButton mr-3" type="button">Połącz</button>
-            <button id="disconnect" class="btButton ml-3" type="button">Rozłącz</button>
-        </div>
 
-        <div id="status" class="text-center">
-            Status
-        </div>
+    <header class="d-flex justify-content-center mt-3 mb-3">
+        <img id="logo" src="images/logo.png" />
+    </header>
+    <hr class="mx-4"/>
+    <div id="apetor" class="d-flex justify-content-center" >
+        <div class="position-absolute skal">Skål!</div>
+        <img id="apetorImage" src="apetor.png" />
     </div>
-
+    
     <div id="loadingPopup">
         <div class="wrapper">
             <button Id="closeButton">
@@ -33,13 +32,15 @@
             </button>
         </div>
         <div id="popupContent">
+            <div id="blur" class="position-absolute w-100 h-100"></div>
+
             <div class="drinkImagePop d-flex justify-content-center">
                 <img Id="imagePop" src="images/aperol.png" alt="aperol" />
             </div>
             <div class="infoPop">
                 <div Id="namePop"></div>
                 <hr />
-                <span Id="descriptionPop"></span>
+                <div Id="descriptionPop"></div>
                 <br />
                 <div class="ingredients mt-1">Składniki:</div>
                 <ul>
@@ -50,16 +51,21 @@
                     <li>czerwona pomarańcza</li>
                 </ul>
             </div>
+
             <div class="d-flex justify-content-center">
-                <button id="order" class="btButton text-center" type="button">Zamawiam</button>
+                <button id="order" class="btButton text-center" type="button">Dawaj</button>
             </div>
-            <div id="progressContainer" class="mt-3">
-                <div id="progress"></div>
+
+            <div class="d-flex justify-content-center">
+                <div id="process">Trwa robienie drina...</div>
+                <div id="progressContainer" class="mt-3">
+                    <div id="progress"></div>
+                </div>
             </div>
         </div>
     </div>
 
-    <div id="drinksBox" class="m-4">
+    <div id="drinksBox" class="p-4">
         <button class="tile" onclick="openPopup(this, 'aperol')">
             <div class="drinkImage d-flex justify-content-center">
                 <img src="images/aperol.png" alt="aperol" />
@@ -109,6 +115,69 @@
                 </span>
             </div>
         </button>
+
+        <!------------------------------------------------------------------------------------------>
+
+        <button class="tile" onclick="openPopup(this, 'longisland')">
+            <div class="drinkImage d-flex justify-content-center">
+                <img src="images/longisland.png" alt="longisland" />
+            </div>
+            <div class="info">
+                <div class="name">Long Island Iced Tea</div>
+                <span class="description">
+                    Long Island Iced Tea to koktajl, który swój początek miał w latach siedemdziesiątych XX wieku w Oak Beach Inn na wschodnim wybrzeżu USA. Twórca drinka – Robert “Rosebud” Butt w swoim przepisie zainspirował się koktajlem podawanym już od 1920 roku (szczególnie w okresie prohibicji) w stanie Tennessee. Przepis zawiera w sobie takie składniki alkoholowe jak tequila, wódka, biały rum oraz triple sec. Wszystkie alkohole przyprawione są syropem, sokiem z cytrusów oraz odrobiną coli. Prostota przyrządzenia polega na przemieszaniu składników i podaniu ich w szklance typu highball wypełnionej lodem.
+                </span>
+            </div>
+        </button>
+
+        <button class="tile" onclick="openPopup(this, 'sex')">
+            <div class="drinkImage d-flex justify-content-center">
+                <img src="images/sex.png" alt="sex" />
+            </div>
+            <div class="info">
+                <div class="name">Sex on the beach</div>
+                <span class="description">
+                    Sex on the beach to typowo wakacyjny koktajl, serwowany na kostkach lodu ze słomką i plastrem cytrusa. Historia powstania tego drinka jest stosunkowo krótka i sięga końca lat osiemdziesiątych na Florydzie. Barmani postanowili wówczas połączyć napoje: Cape Cod i Fuzzy Navel. Właśnie ten fakt fuzji dwóch mieszanek był powodem do wymyślenia znanej na całym świecie nazwy. Obecnie wyróżnimy typy koktajlu – jeden zaakceptowany przez IBA i ten pokrewny, promowany przez  Mr. Boston Official Bartender’s Guide. Aby sporządzić drink klasyczny należy przygotować: wódkę, brzoskwiniowy sznaps, sok pomarańczowy i żurawinowy a także wysoką szklankę.
+                </span>
+            </div>
+        </button>
+
+        <button class="tile" onclick="openPopup(this, 'cosmopolitan')">
+            <div class="drinkImage d-flex justify-content-center">
+                <img src="images/cosmopolitan.png" alt="cosmopolitan" />
+            </div>
+            <div class="info">
+                <div class="name">Cosmopolitan</div>
+                <span class="description">
+                    Cosmopolitan jest prostym do wykonania alkoholem na bazie aromatyzowanej cytryną wódki, likieru triple sec, soku żurawinowego oraz ze świeżo wyciśniętej limonki. Podaje się go bez lodu w koktajlowych kieliszkach. Historia tego napoju jest bardzo zawiła. Część barmanów twierdzi, iż powstał on w latach siedemdziesiątych XX wieku w Stanach Zjednoczonych, inna zaś grupa wspomina o powstaniu drinka około dziesięciu lat później. Kwestia sporna dotyczy także nazwiska autora przepisu. Można wymienić co najmniej pięciu rzekomych wynalazców receptury. Do ciekawostek należy fakt, iż podobny skład miał mieć koktajl, wprowadzony do książki barmańskiej Pioneers of Mixing at Elite Bars, już w 1934 roku.
+                </span>
+            </div>
+        </button>
+
+        <button class="tile" onclick="openPopup(this, 'jagerbomb')">
+            <div class="drinkImage d-flex justify-content-center">
+                <img src="images/jager.png" alt="jagerbomb" />
+            </div>
+            <div class="info">
+                <div class="name">Jagerbomb</div>
+                <span class="description">
+                    Jagerbomb to prawdopodobnie najbardziej znany drink z likierem ziołowo-korzennym Jagermeister. Jest on niezwykle prosty w przygotowaniu – potrzebujemy jedynie Redbulla i Jagermeister’a. Drink na pierwszy rzut oka może wydawać się mieszanką wybuchową, ale jeśli lubimy smak ‘energetyków’ to wtedy to połączenie na pewno przypadnie nam do gustu. Polecam spróbować!
+                </span>
+            </div>
+        </button>
+    </div>
+
+    <div class="py-5"></div>
+
+    <div id="connectDiv" class="position-fixed w-100 py-2">
+        <div class="d-flex align-items-center justify-content-center">
+            <button id="connect" class="btButton mr-3" type="button">Połącz</button>
+            <button id="disconnect" class="btButton ml-3" type="button">Rozłącz</button>
+        </div>
+
+        <div id="status" class="text-center mt-2">
+            Brak połączenia
+        </div>
     </div>
 
     <script src="bt.js"></script>

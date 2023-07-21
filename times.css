@@ -1,27 +1,57 @@
 .progressAperol {
     width: 100% !important;
-    background: #444;
+    background: #fb8d00;
     -webkit-transition: width 3s linear;
     transition: width 3s linear;
 }
 
 .progressRussian {
     width: 100% !important;
-    background: #4d3e2f;
+    background: #7f6764;
     -webkit-transition: width 3s linear;
     transition: width 3s linear;
 }
 
 .progressMojito {
     width: 100% !important;
-    background: #e4f3e0;
+    background: #bfda67;
     -webkit-transition: width 3s linear;
     transition: width 3s linear;
 }
 
 .progressTomCollins {
     width: 100% !important;
-    background: #ffd800;
+    background: #fdfd9c;
+    -webkit-transition: width 3s linear;
+    transition: width 3s linear;
+}
+
+/*--------------------------------------------*/
+
+.progressCosmopolitan {
+    width: 100% !important;
+    background: #e93d47;
+    -webkit-transition: width 3s linear;
+    transition: width 3s linear;
+}
+
+.progressSex {
+    width: 100% !important;
+    background: #ffcc3b;
+    -webkit-transition: width 3s linear;
+    transition: width 3s linear;
+}
+
+.progressJagerbomb {
+    width: 100% !important;
+    background: #c48a44;
+    -webkit-transition: width 3s linear;
+    transition: width 3s linear;
+}
+
+.progressLongIsland {
+    width: 100% !important;
+    background: #e54d0b;
     -webkit-transition: width 3s linear;
     transition: width 3s linear;
 }

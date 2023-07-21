@@ -6,6 +6,9 @@ let loadingPopup = document.getElementById('loadingPopup');
 let closeButton = document.getElementById('closeButton');
 let orderButton = document.getElementById('order');
 let progressContainer = document.getElementById('progressContainer');
+let blur = document.getElementById('blur');
+let process = document.getElementById('process');
+let apetor = document.getElementById('apetor');
 
 let namePop = document.getElementById('namePop');
 let descriptionPop = document.getElementById('descriptionPop');
@@ -28,21 +31,52 @@ function openPopup(element, drink) {
 
 function make() {
     progressContainer.classList.add("progressFocus");
-    switch (clicked) {
-        case 'aperol':
-            progress.classList.add("progressAperol");
-            break;
-        case 'tomcollins':
-            progress.classList.add("progressTomCollins");
-            break;
-        case 'russian':
-            progress.classList.add("progressRussian");
-            break;
-        case 'mojito':
-            progress.classList.add("progressMojito");
-            break;
-    }
+    blur.classList.add("blur");
+    process.classList.add("processOpen");
+
+    removeOrAddClassProgress(true);
+
+    setTimeout(() => {
+        apetor.classList.add('apetorFadeIn');
+        
+    }, "3000");
+
+    setTimeout(() => {
+        apetor.classList.remove('apetorFadeIn');
+        blur.classList.remove("blur");
+        process.className = '';
+        removeOrAddClassProgress(false);
+        loadingPopup.classList.remove("loadingPopupOpen");
+        progressContainer.classList.remove("progressFocus");
+        imagePop.src = '';
+        namePop.innerHTML = '';
+        descriptionPop.innerHTML = '';
+    }, "4300");
+
     clicked = '';
+}
+
+function close() {
+    loadingPopup.classList.remove("loadingPopupOpen");
+    clicked = '';
+}
+
+function removeOrAddClassProgress(add) {
+    if (add == true) {
+        switch (clicked) {
+            case 'aperol':progress.classList.add("progressAperol"); break;
+            case 'tomcollins': progress.classList.add("progressTomCollins"); break;
+            case 'russian': progress.classList.add("progressRussian"); break;
+            case 'mojito': progress.classList.add("progressMojito"); break;
+            case 'longisland': progress.classList.add("progressLongIsland"); break;
+            case 'cosmopolitan': progress.classList.add("progressCosmopolitan"); break;
+            case 'sex': progress.classList.add("progressSex"); break;
+            case 'jagerbomb': progress.classList.add("progressJagerbomb"); break;
+        }
+    }
+    else {
+        progress.className = '';
+    }
 }
 
 connectButton.addEventListener('click', function () {
@@ -60,11 +94,6 @@ closeButton.addEventListener('click', function () {
 orderButton.addEventListener('click', function () {
     make();
 });
-
-function close() {
-    loadingPopup.classList.remove("loadingPopupOpen");
-    clicked = '';
-}
 
 function connect() {
     return (deviceCache ? Promise.resolve(deviceCache) :

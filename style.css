@@ -3,7 +3,13 @@
 }
 
 body {
-    background:#f8f8f8;
+    background: #f8f8f8;
+    height: 100%;
+    position: relative;
+}
+
+html {
+    height: 100%;
 }
 
 a {
@@ -33,10 +39,15 @@ button {
     }
 
 
+header {
+    height: 150px;
+}
+
 #connectDiv {
     bottom: 0;
     background: white;
     box-shadow: 0 4px 10px rgba(0,0,0,.43);
+    position: sticky;
 }
 
 #status {
@@ -48,13 +59,15 @@ button {
     font-size: 12px;
     line-height: 26px;
     background: #f8f8f8;
-    margin-top: 10px;
-    margin-bottom: 10px;
 }
 
 #order {
     font-size: 12px;
     height: 32px;
+}
+
+.blur {
+    backdrop-filter: blur(5px);
 }
 
 .btButton {
@@ -102,49 +115,54 @@ button {
     }
 
 #loadingPopup {
+    backdrop-filter: blur(2px);
     margin: auto;
-    align-items: center;
     display: flex;
     justify-content: center;
-    position: absolute;
+    position: fixed;
     left: 0;
     right: 0;
-    top: 0;
     bottom: 0;
+    top: 0;
     background: rgba(100, 100, 100, 0.4);
     transition: all 0.4s;
     visibility: hidden;
     opacity: 0;
     z-index: 100;
+    height: 100%;
 }
 
-    .loadingPopupOpen {
-        visibility: visible !important;
-        opacity: 1 !important;
-    }
+.loadingPopupOpen {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
 
 #popupContent {
+    margin-top: 20px;
+    height: fit-content;
     background: white;
     width: 95%;
     padding: 1em 0.9em;
+    padding-bottom: 56px;
     border-radius: 4px;
-    position: absolute;
-    top: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,.1);
 }
 
-#progressContainer {
-    width: 90%;
-    margin: 0 auto;
-    height: 25px;
-    border: 1px silver solid;
-    border-radius: 4px;
-    background: white;
-    transition: all 0.2s linear;
-    opacity: 0.3;
-}
+    #progressContainer {
+        position: fixed;
+        width: 75%;
+        margin: 0 auto;
+        height: 25px;
+        border: 1px silver solid;
+        border-radius: 4px;
+        background: white;
+        transition: all 0.2s linear;
+        opacity: 0.3;
+        z-index: 300;
+    }
 
 .progressFocus {
-    transform: scale(1.05);
+    transform: scale(1.15, 1) translateY(-250px) !important;
     opacity: 1 !important;
 }
 
@@ -215,6 +233,14 @@ button {
     text-align: justify;
 }
 
+#descriptionPop {
+    max-height: 140px;
+    overflow: scroll;
+    padding-bottom: 6px;
+    padding-right: 15px;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
 .description {
     text-overflow: ellipsis;
     overflow: hidden;
@@ -242,7 +268,7 @@ button {
 
 .arrow {
     right: 7%;
-    top: 4%;
+    top: 7%;
     z-index: 200;
     width: 40px;
     height: 40px;
@@ -280,6 +306,83 @@ button {
 
 .making {
     font-size: 14px;
+}
+
+#blur {
+    transition: all 0.2s;
+    left: 0;
+    top: 0;
+}
+
+.blur {
+    z-index: 250;
+    backdrop-filter: grayscale(0.5) blur(5px);
+}
+
+#process {
+    font-weight: 600;
+    font-size: 17px;
+    transition: all 0.2s;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 300;
+    height: 0px;
+}
+
+.processOpen {
+    transform: scale(1.1);
+    transform: translateY(-265px);
+    visibility: visible !important;
+    opacity: 1 !important;
+    height: 20px;
+}
+
+#apetor {
+    font-size: 5px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    top: 40%;
+    height: 50px;
+    opacity: 0;
+    z-index: 400;
+}
+
+@-webkit-keyframes fadeinout {
+    25% { 
+        opacity: 1; 
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        transform: scale(6);
+        opacity: 0;
+    }
+}
+
+@keyframes fadeinout {
+    25% {
+        opacity: 1;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        transform: scale(6);
+        opacity: 0;
+    }
+}
+
+.skal {
+    top: -4px;
+}
+
+.apetorFadeIn {
+    -webkit-animation: fadeinout 1.3s ease-out forwards;
+    animation: fadeinout 1.3s ease-out forwards;
 }
 
 @media (min-width: 1400px) {
