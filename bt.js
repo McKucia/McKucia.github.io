@@ -15,6 +15,7 @@ let descriptionPop = document.getElementById('descriptionPop');
 let imagePop = document.getElementById("imagePop");
 
 var clicked = '';
+var connected = false;
 
 function openPopup(element, drink) {
     clicked = drink;
@@ -30,6 +31,12 @@ function openPopup(element, drink) {
 }
 
 function make() {
+    if(!connected) {
+        alert("Brak połączenia z urządzeniem");
+        return;
+    }
+
+    send(clicked);
     progressContainer.classList.add("progressFocus");
     blur.classList.add("blur");
     process.classList.add("processOpen");
@@ -38,7 +45,6 @@ function make() {
 
     setTimeout(() => {
         apetor.classList.add('apetorFadeIn');
-        
     }, "3000");
 
     setTimeout(() => {
@@ -64,14 +70,14 @@ function close() {
 function removeOrAddClassProgress(add) {
     if (add == true) {
         switch (clicked) {
-            case 'aperol':progress.classList.add("progressAperol"); break;
-            case 'tomcollins': progress.classList.add("progressTomCollins"); break;
-            case 'russian': progress.classList.add("progressRussian"); break;
-            case 'mojito': progress.classList.add("progressMojito"); break;
-            case 'longisland': progress.classList.add("progressLongIsland"); break;
-            case 'cosmopolitan': progress.classList.add("progressCosmopolitan"); break;
-            case 'sex': progress.classList.add("progressSex"); break;
-            case 'jagerbomb': progress.classList.add("progressJagerbomb"); break;
+            case '1':progress.classList.add("progressAperol"); break;
+            case '2': progress.classList.add("progressTomCollins"); break;
+            case '3': progress.classList.add("progressRussian"); break;
+            case '4': progress.classList.add("progressMojito"); break;
+            case '5': progress.classList.add("progressLongIsland"); break;
+            case '6': progress.classList.add("progressSex"); break;
+            case '7': progress.classList.add("progressCosmopolitan"); break;
+            case '8': progress.classList.add("progressJagerbomb"); break;
         }
     }
     else {
@@ -122,7 +128,8 @@ function disconnect() {
             handleCharacteristicValueChanged);
         characteristicCache = null;
     }
-
+    status.innerHTML = "Brak połączenia";
+    connected = false;
     deviceCache = null;
 }
 
@@ -144,10 +151,10 @@ let deviceCache = null;
 
 function requestBluetoothDevice() {
     return navigator.bluetooth.requestDevice({
-        acceptAllDevices: true
+        filters: [{ services: [0xFFE0] }]
     }).
         then(device => {
-            log('Wybrane urządzenie: ' + device.name != null ? device.name : 'nieobsługiwane')
+            // log('Wybrane urządzenie: ' + device.name != null ? device.name : 'nieobsługiwane')
             deviceCache = device;
             deviceCache.addEventListener('gattserverdisconnected',
                 handleDisconnection);
@@ -190,7 +197,8 @@ function connectDeviceAndCacheCharacteristic(device) {
 function startNotifications(characteristic) {
     return characteristic.startNotifications().
         then(() => {
-            log(deviceCache);
+            log("Połączono z " + deviceCache.name);
+            connected = true;
             characteristic.addEventListener('characteristicvaluechanged',
                 handleCharacteristicValueChanged);
         });
@@ -201,5 +209,6 @@ function handleCharacteristicValueChanged(event) {
 }
 
 function log(message) {
+    console.log(message);
     status.innerHTML = message;
 }
